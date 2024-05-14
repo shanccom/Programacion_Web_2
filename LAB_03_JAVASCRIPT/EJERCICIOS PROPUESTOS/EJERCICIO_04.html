@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extraer Código de Sesión de Google Meet</title>
+</head>
+<body>
+<div>
+    <h1>Extraer Código de Sesión de Google Meet</h1>
+    <label for="url">Introduce el URL de la sesión de Google Meet:</label>
+    <br> <input type="text" id="url"> <br>
+    <button onclick="obtenerCodigo()">Obtener Código</button><br>
+    <p id="codigo"></p>
+</div>
+
+<script>
+function obtenerCodigo() {
+
+    const url = document.getElementById("url").value.trim();
+    const regex = /https:\/\/meet\.google\.com\/([a-zA-Z0-9_-]+)/;
+    const match = url.match(regex);
+    
+    if (match) {
+
+        const codigo = match[1];
+        const codigoSinGuiones = codigo.replace(/-/g, '');
+        document.getElementById("codigo").innerText = `Código de la sesión: ${codigoSinGuiones}`;
+
+    } else {
+        document.getElementById("codigo").innerText = "URL no válido. Por favor, introduce un URL de Google Meet válido.";
+    }
+}
+</script>
+</body>
+</html>

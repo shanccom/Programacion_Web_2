@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suma de Valores en una Tabla Dinámica</title>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 50%;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid red;
+        padding: 8px;
+        text-align: center;
+    }
+</style>
+
+</head>
+<body>
+<div>
+    <h1>Suma de Valores en una Tabla Dinámica</h1>
+    <form id="formulario">
+        <label for="numValores">Cantidad de Valores:</label>
+        <input  id="numValores" name="numValores" required min="1">
+        <button type="submit">Crear Tabla</button>
+    </form>
+    <div id="tablaContainer"></div>
+    <button id="calcularSuma" style="display:none;">Calcular Suma</button>
+    <p id="resultado"></p>
+</div>
+
+<script>
+
+document.getElementById("formulario").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const numValores = parseInt(document.getElementById("numValores").value);
+    let tablaHtml = "<table><tr><th>Valores</th></tr>";
+
+    for (let i = 0; i < numValores; i++) {
+        const valor = Math.floor(Math.random() * 100) + 1;
+        tablaHtml += `<tr><td>${valor}</td></tr>`;
+    }
+
+    tablaHtml += "</table>";
+    document.getElementById("tablaContainer").innerHTML = tablaHtml;
+    document.getElementById("calcularSuma").style.display = "block";
+
+});
+
+document.getElementById("calcularSuma").addEventListener("click", function() {
+    const valores = document.querySelectorAll("#tablaContainer table td");
+    let suma = 0;
+    valores.forEach(function(valor) {
+        suma += parseInt(valor.textContent);
+    });
+    document.getElementById("resultado").innerText = `La suma de los valores es: ${suma}`;
+});
+
+</script>
+
+</body>
+</html>
