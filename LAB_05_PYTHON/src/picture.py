@@ -13,6 +13,7 @@ class Picture:
 
   def verticalMirror(self):
     """ Devuelve el espejo vertical de la imagen """
+    imgVertical = [line for line in reversed(self.img)]
     return Picture(imgVertical)
 
   def horizontalMirror(self):
@@ -32,8 +33,17 @@ class Picture:
     return Picture(ayuda)
 
   def up(self, p):
+    superposicion = []
+    for i in range(max(len(self.img), len(p.img))):
+      if i < len(p.img):
+        if i < len(self.img):
+          superposicion.append(''.join([self.img[i][j] if self.img[i][j] != ' ' else p.img[i][j] for j in range(max(len(self.img[i]), len(p.img[i]))) ]))
+        else:
+          superposicion.append(p.img[i])
+      else:
+        superposicion.append(self.img[i])
     return Picture(superposicion)
-
+  
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre la
         figura actual """
