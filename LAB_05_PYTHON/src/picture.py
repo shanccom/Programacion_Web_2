@@ -12,25 +12,25 @@ class Picture:
     return inverter[color]
 
   def verticalMirror(self):
-    """ Devuelve el espejo vertical de la imagen """
-    imgVertical = [line for line in reversed(self.img)]
+    imgVertical = [fila for fila in reversed(self.img)]
     return Picture(imgVertical)
 
   def horizontalMirror(self):
-    """ Devuelve el espejo horizontal de la imagen """
+    imgHorizontal = [fila[::-1] for fila in self.img]
     return Picture(imgHorizontal)
 
   def negative(self):
-    """ Devuelve un negativo de la imagen """
-    return Picture(None)
+    imgInvertida = []
+    for fila in self.img:
+        filaInvertida = ''.join([self._invColor(char) for char in fila])
+        imgInvertida.append(filaInvertida)
+    return Picture(imgInvertida)
 
   def join(self, p):
-    """ Devuelve una nueva figura poniendo la figura del argumento 
-        al lado derecho de la figura actual """
-    ayuda = []
+    imgNueva = []
     for x in range(len(self.img)):
-      ayuda.append(self.img[x] + p.img[x])
-    return Picture(ayuda)
+      imgNueva.append(self.img[x] + p.img[x])
+    return Picture(imgNueva)
 
   def up(self, p):
     superposicion = []
@@ -43,21 +43,23 @@ class Picture:
       else:
         superposicion.append(self.img[i])
     return Picture(superposicion)
-  
+ 
   def under(self, p):
-    """ Devuelve una nueva figura poniendo la figura p sobre la
-        figura actual """
-    ayuda = []
-    ayuda = self.img + p.img
-    return Picture(ayuda)
+    imgNueva = []
+    imgNueva = self.img + p.img
+    return Picture(imgNueva)
   
   def horizontalRepeat(self, n):
-    """ Devuelve una nueva figura repitiendo la figura actual al costado
-        la cantidad de veces que indique el valor de n """
-    return Picture(None)
+    if n <= 0:
+        return Picture([])
+    imgNueva = [row * n for row in self.img]
+    return Picture(imgNueva)
 
   def verticalRepeat(self, n):
-    return Picture(None)
+    if n <= 0:
+        return Picture([]) 
+    imgNueva = self.img * n 
+    return Picture(imgNueva)
 
   #Extra: Sólo para realmente viciosos 
   def rotate(self):
