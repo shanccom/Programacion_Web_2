@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import AlumnoForm, CursoForm, NotasAlumnosPorCursoForm
 from .models import Alumno, Curso, NotasAlumno
 
@@ -44,4 +44,17 @@ def lista_notas(request):
     notas = NotasAlumno.objects.all()
     return render(request, 'administracion/lista_notas.html', {'notas': notas})
 
+def eliminar_alumno(request, alumno_id):
+    alumno = Alumno.objects.get(pk=alumno_id)
+    alumno.delete()
+    return redirect('lista_alumnos')
 
+def eliminar_curso(request, curso_id):
+    curso = Curso.objects.get(pk=curso_id)
+    curso.delete()
+    return redirect('lista_cursos')
+
+def eliminar_nota(request, nota_id):
+    nota = NotasAlumno.objects.get(pk=nota_id)
+    nota.delete()
+    return redirect('lista_notas')

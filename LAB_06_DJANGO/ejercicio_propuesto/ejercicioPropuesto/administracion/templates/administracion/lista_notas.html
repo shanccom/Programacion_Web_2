@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Notas</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1>Lista de Notas</h1>
@@ -13,6 +14,7 @@
                 <th>Alumno</th>
                 <th>Curso</th>
                 <th>Nota</th>
+                <th>Acciones</th> 
             </tr>
         </thead>
         <tbody>
@@ -21,6 +23,9 @@
                     <td>{{ nota.alumno }}</td>
                     <td>{{ nota.curso }}</td>
                     <td>{{ nota.nota }}</td>
+                    <td>
+                        <a href="{% url 'eliminar_nota' nota.id %}">Eliminar</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

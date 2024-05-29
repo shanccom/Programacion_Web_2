@@ -2,12 +2,14 @@
 <html>
 <head>
     <title>Lista de Cursos</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1>Lista de Cursos</h1>
     <ul>
         {% for curso in cursos %}
-            <li>{{ curso.nombre }}</li>
+            <p>{{ curso.nombre }} - {{ curso.descripcion }}</p>
+            <a href="{% url 'eliminar_curso' curso.id %}">Eliminar</a>
         {% endfor %}
     </ul>
 </body>
