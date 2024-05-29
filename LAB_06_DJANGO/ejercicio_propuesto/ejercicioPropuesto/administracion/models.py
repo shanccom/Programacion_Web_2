@@ -12,7 +12,6 @@ class Alumno(models.Model):
 
 class Curso(models.Model):
     nombre = models.CharField(max_length = 20)
-    descripcion = models.TextField()
 
     def __str__(self):
         return self.nombre
