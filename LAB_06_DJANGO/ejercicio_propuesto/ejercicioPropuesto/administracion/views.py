@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import AlumnoForm, CursoForm, NotasAlumnosPorCursoForm
+from .models import Alumno, Curso, NotasAlumno
 
 def nuevo_alumno(request):
     if request.method == "POST":
@@ -30,3 +31,17 @@ def nueva_nota(request):
     else:
         form = NotasAlumnosPorCursoForm()
     return render(request, 'administracion/nueva_nota.html', {'form': form})
+
+def lista_alumnos(request):
+    alumnos = Alumno.objects.all()
+    return render(request, 'administracion/lista_alumnos.html', {'alumnos': alumnos})
+
+def lista_cursos(request):
+    cursos = Curso.objects.all()
+    return render(request, 'administracion/lista_cursos.html', {'cursos': cursos})
+
+def lista_notas(request):
+    notas = NotasAlumno.objects.all()
+    return render(request, 'administracion/lista_notas.html', {'notas': notas})
+
+

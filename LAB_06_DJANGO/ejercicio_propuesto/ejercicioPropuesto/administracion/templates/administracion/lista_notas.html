@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Notas</title>
+</head>
+<body>
+    <h1>Lista de Notas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Alumno</th>
+                <th>Curso</th>
+                <th>Nota</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nota in notas %}
+                <tr>
+                    <td>{{ nota.alumno }}</td>
+                    <td>{{ nota.curso }}</td>
+                    <td>{{ nota.nota }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
