@@ -14,3 +14,4 @@ urlpatterns = [
     path('eliminar_nota/<int:nota_id>/', eliminar_nota, name='eliminar_nota'),
 
 ]   
+    
