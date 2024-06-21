@@ -1,0 +1,13 @@
+<div>
+    <h1>Juego del Ahorcado</h1>
+    <p>{{ mensaje }}</p>
+    <p>Palabra a adivinar: {{ palabraMostrada }}</p>
+    <p>Intentos restantes: {{ intentosRestantes }}</p>
+    <p>Letras intentadas: {{ letrasIntentadas.join(', ') }}</p>
+    <div *ngIf="mensaje !== '¡Ganaste!' && mensaje !== '¡Perdiste!'">
+        <p>Intenta con una letra:</p>
+        <input type="text" #letraInput (keyup.enter)="intentar(letraInput.value.toUpperCase())">
+        <button (click)="intentar(letraInput.value.toUpperCase())">Intentar</button>
+    </div>
+    <button (click)="reiniciarJuego()">Reiniciar Juego</button>
+</div>
