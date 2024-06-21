@@ -17,7 +17,7 @@ export class AhorcadoComponent implements OnInit {
   mensaje: string = '';
   letraIngresada: string = '';
 
-  palabras: string[] = ['ANGULAR', 'JAVASCRIPT', 'COMPONENTE', 'HTML', 'CSS']; 
+  palabras: string[] = ['ANGULAR', 'JAVASCRIPT', 'COMPONENTE', 'HTML', 'CSS' , 'PROGRAMACION', 'CELULAR', 'LAPTOP']; 
 
   ngOnInit(): void {
     this.seleccionarPalabra();
@@ -40,7 +40,7 @@ export class AhorcadoComponent implements OnInit {
   }
 
   intentar(letra: string): void {
-    if (!this.letrasIntentadas.includes(letra)) {
+    if (!this.letrasIntentadas.includes(letra) && letra.match(/^[A-Z]$/)) {
       this.letrasIntentadas.push(letra);
       if (!this.palabraSecreta.includes(letra)) {
         this.intentosRestantes--;
@@ -59,11 +59,14 @@ export class AhorcadoComponent implements OnInit {
   }
 
   reiniciarJuego(): void {
-    // Reinicia el juego
     this.intentosRestantes = 6;
     this.letrasIntentadas = [];
     this.seleccionarPalabra();
     this.actualizarPalabraMostrada();
     this.mensaje = '';
+  }
+
+  get imagenAhorcado(): string {
+    return `assets/ahorcado${6 - this.intentosRestantes}.png`;
   }
 }

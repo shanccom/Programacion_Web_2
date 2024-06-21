@@ -1,11 +1,12 @@
-<div>
-    <h1>Juego del Ahorcado</h1>
+<div class="juego-container">
+    <h1>JUEGO DEL AHORCADO</h1>
+    <img [src]="imagenAhorcado" class="ahorcado-image">
     <p>{{ mensaje }}</p>
-    <p>Palabra a adivinar: {{ palabraMostrada }}</p>
-    <p>Intentos restantes: {{ intentosRestantes }}</p>
-    <p>Letras intentadas: {{ letrasIntentadas.join(', ') }}</p>
+    <p>Palabra a adivinar: <span>{{ palabraMostrada }}</span></p>
+    <p class="intentos-restantes">Intentos restantes: <span>{{ intentosRestantes }}</span></p>
+    <p class="letras-intentadas">Letras intentadas: <span>{{ letrasIntentadas.join(', ') }}</span></p>
     <div *ngIf="mensaje !== '¡Ganaste!' && mensaje !== '¡Perdiste!'">
-        <p>Intenta con una letra:</p>
+        <p>INTENTA CON UNA LETRA:</p>
         <input type="text" #letraInput (keyup.enter)="intentar(letraInput.value.toUpperCase())">
         <button (click)="intentar(letraInput.value.toUpperCase())">Intentar</button>
     </div>

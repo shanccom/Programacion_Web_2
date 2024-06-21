@@ -1,0 +1,71 @@
+
+body {
+    text-align: center;
+}
+
+.juego-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+input[type="text"] {
+    font-size: 1.2em;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    font-size: 1.2em;
+    padding: 5px 20px;
+    color: #000000;
+    background-color: #f5df90;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+div {
+    margin-top: 20px;
+}
+
+.letras-intentadas {
+    margin-top: 10px;
+}
+
+.letras-intentadas span {
+    display: inline-block;
+    margin: 0 5px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.ahorcado-image {
+    width: 100px; 
+    height: auto; 
+    display: block;
+    margin: 20px auto;
+}
