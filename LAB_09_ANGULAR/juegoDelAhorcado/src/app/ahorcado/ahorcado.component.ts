@@ -69,4 +69,5 @@ export class AhorcadoComponent implements OnInit {
   get imagenAhorcado(): string {
     return `assets/ahorcado${6 - this.intentosRestantes}.png`;
   }
+  
 }
